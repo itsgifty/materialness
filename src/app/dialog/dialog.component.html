@@ -1,14 +1,26 @@
-<h3 mat-dialog-title>Forgot Username? </h3>
+<div fxLayout="row" fxLayoutAlign="space-between start">
+    <h3 mat-dialog-title>Forgot username?
+    </h3>
+    <button mat-button mat-dialog-close>
+        <mat-icon matSuffix>close</mat-icon>
+    </button>
+</div>
 <div fxLayout="column" fxLayoutAlign="space-around ">
     <div mat-dialog-content>
-        <form>
+
+        <!-- <mat-form-field class="email-form" appearance="outline">
+            <input matInput [(ngModel)]="data.email" required [pattern]="emailPattern" name="email"
+                placeholder="enter your email">
+        </mat-form-field> -->
+        <form (ngSubmit)="submit()">
             <mat-form-field class="email-form" appearance="outline">
-                <input matInput placeholder="enter your email">
+                <input matInput [formControl]="emailFormControl" name="email" placeholder="enter your email">
             </mat-form-field>
         </form>
     </div>
-    <div mat-dialog-actions class="dialog-buttons" align="end">
-        <button mat-button (click)="onNoClick()" cdkFocusInitial>submit</button>
-        <button mat-button mat-dialog-close>cancel</button>
+    <div mat-dialog-actions class="dialog-buttons">
+        <button mat-button [disabled]="emailFormControl.invalid" (click)="submit()">submit</button>
+
+        <button mat-button (click)="onNoClick()" mat-dialog-close>cancel</button>
     </div>
 </div>
