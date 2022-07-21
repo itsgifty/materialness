@@ -1,26 +1,27 @@
-<div fxLayout="row" fxLayoutAlign="space-between start">
-    <h3 mat-dialog-title>Forgot username?
-    </h3>
-    <button mat-button mat-dialog-close>
-        <mat-icon matSuffix>close</mat-icon>
-    </button>
-</div>
-<div fxLayout="column" fxLayoutAlign="space-around ">
-    <div mat-dialog-content>
+<div class="dialog-container">
+    <div fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="8px">
+        <div class="dialog-header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>Forgot Username?</div>
+            <button mat-button mat-dialog-close>
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
 
-        <!-- <mat-form-field class="email-form" appearance="outline">
-            <input matInput [(ngModel)]="data.email" required [pattern]="emailPattern" name="email"
-                placeholder="enter your email">
-        </mat-form-field> -->
-        <form (ngSubmit)="submit()">
-            <mat-form-field class="email-form" appearance="outline">
-                <input matInput [formControl]="emailFormControl" name="email" placeholder="enter your email">
-            </mat-form-field>
-        </form>
+        <div class="email-form-container" mat-dialog-content>
+            <form class="form-container" (ngSubmit)="submit()">
+                <mat-form-field class="email-form" appearance="outline">
+                    <input matInput [formControl]="emailFormControl" required name="email"
+                        placeholder="Enter your email" />
+                    <mat-icon matSuffix>mail</mat-icon>
+                </mat-form-field>
+            </form>
+        </div>
     </div>
     <div mat-dialog-actions class="dialog-buttons">
-        <button mat-button [disabled]="emailFormControl.invalid" (click)="submit()">submit</button>
-
-        <button mat-button (click)="onNoClick()" mat-dialog-close>cancel</button>
+        <button mat-button [disabled]="emailFormControl.invalid" (click)="submit()">
+            Submit
+        </button>
+        <button mat-button mat-dialog-close>Cancel</button>
     </div>
+
 </div>
